@@ -31,6 +31,28 @@ class Book extends Model
     private $library;
 
     /**
+     * @var null|User
+     */
+    private $user;
+
+    /**
+     * @return User|null
+     */
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User|null $user
+     * @return $this
+     */
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+    }
+
+    /**
      * @return string
      */
     public function getName(): string
@@ -114,6 +136,5 @@ class Book extends Model
     {
         $this->reservationTime = $reservationTime;
     }
-
 
 }

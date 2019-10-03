@@ -26,12 +26,12 @@ class User extends Authenticatable
     private $password;
 
     /**
-     * @var string
+     * @var null|string
      */
     private $role;
 
     /**
-     * @var string
+     * @var null|string
      */
     private $bio;
 

@@ -23,8 +23,8 @@ class Review extends Migration
             $table->foreign('user_id')
                 ->references('id')->on('users')
                 ->onDelete('cascade');
-            $table->string('comment');
-            $table->integer('rate');
+            $table->string('comment')->nullable();
+            $table->integer('rate')->nullable();
             $table->timestamps();
         });
     }

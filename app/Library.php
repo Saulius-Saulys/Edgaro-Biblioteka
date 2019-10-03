@@ -21,6 +21,11 @@ class Library extends Model
      */
     private $user;
 
+    public function books()
+    {
+        return $this->hasMany(Book::class);
+    }
+
     /**
      * @return string
      */
@@ -36,11 +41,6 @@ class Library extends Model
     public function setName(string $name): self
     {
         $this->name = $name;
-    }
-
-    public function books()
-    {
-        return $this->hasMany(Book::class);
     }
 
     /**
