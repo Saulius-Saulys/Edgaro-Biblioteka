@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class Book extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('books', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('library_id')->unsigned();
+            $table->foreign('library_id')
+                ->references('id')->on('libraries')
+                ->onDelete('cascade');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('role');
-            $table->string('bio');
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('status');
+            $table->dateTime('reservationTime');
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('books');
     }
 }
