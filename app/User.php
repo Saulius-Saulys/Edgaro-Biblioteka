@@ -2,38 +2,48 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    const CASUAL_USER = 'casualUser';
+    const ADMIN = 'admin';
+    const LIBRARIAN = 'librarian';
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
+     * @var string
      */
+    private $name;
+
+    /**
+     * @var string
+     */
+    private $email;
+
+    /**
+     * @var string
+     */
+    private $password;
+
+    /**
+     * @var null|string
+     */
+    private $role;
+
+    /**
+     * @var null|string
+     */
+    private $bio;
+
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role', 'bio'
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function library()
+    {
+        return $this->hasMany(Library::class);
+    }
 }
