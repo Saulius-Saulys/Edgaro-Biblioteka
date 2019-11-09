@@ -10,31 +10,6 @@ class User extends Authenticatable
     const ADMIN = 'admin';
     const LIBRARIAN = 'librarian';
 
-    /**
-     * @var string
-     */
-    private $name;
-
-    /**
-     * @var string
-     */
-    private $email;
-
-    /**
-     * @var string
-     */
-    private $password;
-
-    /**
-     * @var null|string
-     */
-    private $role;
-
-    /**
-     * @var null|string
-     */
-    private $bio;
-
     protected $fillable = [
         'name', 'email', 'password', 'role', 'bio'
     ];
